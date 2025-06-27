@@ -1,0 +1,531 @@
+/* Windows 95 Style CSS */
+@import url('https://fonts.googleapis.com/css2?family=MS+Sans+Serif&display=swap');
+
+:root {
+  --win95-bg: #c0c0c0;
+  --win95-dark-gray: #808080;
+  --win95-light-gray: #dfdfdf;
+  --win95-white: #ffffff;
+  --win95-black: #000000;
+  --win95-blue: #000080;
+  --win95-light-blue: #0080ff;
+  --win95-green: #008000;
+  --win95-red: #800000;
+  --win95-yellow: #ffff00;
+  --win95-shadow: #404040;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'MS Sans Serif', sans-serif;
+  font-size: 11px;
+  background: var(--win95-bg);
+  color: var(--win95-black);
+  margin: 0;
+  padding: 0;
+}
+
+/* Desktop Background */
+.desktop {
+  width: 100vw;
+  height: 100vh;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.8) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.6) 0%, transparent 50%),
+    linear-gradient(135deg, #2e8b57 0%, #228b22 25%, #32cd32 50%, #98fb98 75%, #90ee90 100%);
+  background-size: 100% 100%;
+  position: relative;
+  padding: 10px;
+  overflow: auto;
+}
+
+.desktop::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.3) 2px, transparent 2px),
+    radial-gradient(circle at 30% 60%, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+    radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.25) 1.5px, transparent 1.5px),
+    radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+  background-size: 50px 50px, 30px 30px, 40px 40px, 25px 25px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.desktop > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Window Chrome */
+.window {
+  background: var(--win95-bg);
+  border: 2px outset var(--win95-bg);
+  margin: 10px;
+  max-width: 800px;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  resize: both;
+  overflow: auto;
+  min-width: 300px;
+  min-height: 200px;
+}
+
+.window.resizable {
+  resize: both;
+}
+
+.window-resize-handle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(-45deg, transparent 30%, #808080 30%, #808080 40%, transparent 40%, transparent 60%, #808080 60%, #808080 70%, transparent 70%);
+  cursor: nw-resize;
+}
+
+.window-titlebar {
+  background: linear-gradient(90deg, var(--win95-blue) 0%, var(--win95-light-blue) 100%);
+  color: var(--win95-white);
+  padding: 2px 4px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+}
+
+.window-controls {
+  display: flex;
+  gap: 2px;
+}
+
+.window-button {
+  width: 16px;
+  height: 14px;
+  background: var(--win95-bg);
+  border: 1px outset var(--win95-bg);
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--win95-black);
+}
+
+.window-button:active {
+  border: 1px inset var(--win95-bg);
+}
+
+.window-content {
+  padding: 8px;
+  background: var(--win95-bg);
+  min-height: 200px;
+}
+
+/* Buttons */
+.win95-button {
+  background: var(--win95-bg);
+  border: 2px outset var(--win95-bg);
+  padding: 4px 8px;
+  font-family: 'MS Sans Serif', sans-serif;
+  font-size: 11px;
+  cursor: pointer;
+  margin: 4px;
+  color: var(--win95-black);
+}
+
+.win95-button:hover {
+  background: var(--win95-light-gray);
+}
+
+.win95-button:active {
+  border: 2px inset var(--win95-bg);
+}
+
+.win95-button:disabled {
+  color: var(--win95-dark-gray);
+  cursor: not-allowed;
+}
+
+.win95-button.primary {
+  border: 3px outset var(--win95-bg);
+  font-weight: bold;
+}
+
+/* Input Fields */
+.win95-input {
+  background: var(--win95-white);
+  border: 2px inset var(--win95-bg);
+  padding: 2px 4px;
+  font-family: 'MS Sans Serif', sans-serif;
+  font-size: 11px;
+  color: var(--win95-black);
+}
+
+/* Text Areas */
+.win95-textarea {
+  background: var(--win95-white);
+  border: 2px inset var(--win95-bg);
+  padding: 4px;
+  font-family: 'MS Sans Serif', sans-serif;
+  font-size: 11px;
+  color: var(--win95-black);
+  resize: none;
+}
+
+/* Panels */
+.win95-panel {
+  background: var(--win95-bg);
+  border: 2px inset var(--win95-bg);
+  padding: 8px;
+  margin: 4px 0;
+}
+
+.win95-panel-raised {
+  background: var(--win95-bg);
+  border: 2px outset var(--win95-bg);
+  padding: 8px;
+  margin: 4px 0;
+}
+
+/* Progress Bar */
+.win95-progress {
+  background: var(--win95-white);
+  border: 2px inset var(--win95-bg);
+  height: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.win95-progress-fill {
+  background: var(--win95-blue);
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+/* Menu Bar */
+.win95-menubar {
+  background: var(--win95-bg);
+  border-bottom: 1px solid var(--win95-dark-gray);
+  padding: 2px;
+  display: flex;
+  gap: 8px;
+}
+
+.win95-menu-item {
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.win95-menu-item:hover {
+  background: var(--win95-light-blue);
+  color: var(--win95-white);
+}
+
+/* Status Bar */
+.win95-statusbar {
+  background: var(--win95-bg);
+  border-top: 1px solid var(--win95-dark-gray);
+  padding: 2px 4px;
+  font-size: 11px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Dialog Boxes */
+.win95-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--win95-bg);
+  border: 2px outset var(--win95-bg);
+  box-shadow: 4px 4px 8px rgba(0,0,0,0.3);
+  z-index: 1000;
+  min-width: 300px;
+}
+
+.win95-dialog-content {
+  padding: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.win95-dialog-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.win95-dialog-text {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.win95-dialog-buttons {
+  padding: 8px 16px 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* List Box */
+.win95-listbox {
+  background: var(--win95-white);
+  border: 2px inset var(--win95-bg);
+  height: 120px;
+  overflow-y: auto;
+}
+
+.win95-listbox-item {
+  padding: 2px 4px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.win95-listbox-item:hover {
+  background: var(--win95-light-blue);
+  color: var(--win95-white);
+}
+
+.win95-listbox-item.selected {
+  background: var(--win95-blue);
+  color: var(--win95-white);
+}
+
+/* Group Box */
+.win95-groupbox {
+  border: 2px inset var(--win95-bg);
+  padding: 8px;
+  margin: 8px 0;
+  position: relative;
+}
+
+.win95-groupbox-title {
+  position: absolute;
+  top: -6px;
+  left: 8px;
+  background: var(--win95-bg);
+  padding: 0 4px;
+  font-size: 11px;
+}
+
+/* Scrollbars */
+.win95-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--win95-dark-gray) var(--win95-bg);
+}
+
+.win95-scrollbar::-webkit-scrollbar {
+  width: 16px;
+}
+
+.win95-scrollbar::-webkit-scrollbar-track {
+  background: var(--win95-bg);
+  border: 1px inset var(--win95-bg);
+}
+
+.win95-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--win95-bg);
+  border: 1px outset var(--win95-bg);
+}
+
+.win95-scrollbar::-webkit-scrollbar-button {
+  background: var(--win95-bg);
+  border: 1px outset var(--win95-bg);
+  height: 16px;
+}
+
+/* Icons */
+.icon {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  text-align: center;
+  line-height: 32px;
+  font-size: 24px;
+}
+
+.icon-folder { background-color: #ffff00; }
+.icon-document { background-color: #ffffff; }
+.icon-application { background-color: #c0c0c0; }
+
+/* Desktop Icons */
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 64px;
+  margin: 8px;
+  cursor: pointer;
+  user-select: none;
+  position: absolute;
+  transition: all 0.1s ease;
+}
+
+.desktop-icon:hover {
+  transform: scale(1.05);
+}
+
+.desktop-icon.dragging {
+  z-index: 1000;
+  transform: rotate(2deg) scale(1.1);
+  opacity: 0.8;
+}
+
+.desktop-icon-image {
+  width: 32px;
+  height: 32px;
+  background: var(--win95-bg);
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 4px;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  border-radius: 2px;
+}
+
+.desktop-icon-label {
+  font-size: 11px;
+  text-align: center;
+  color: var(--win95-white);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.9);
+  line-height: 1.2;
+  max-width: 64px;
+  word-wrap: break-word;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+.desktop-icon.selected .desktop-icon-image {
+  background: var(--win95-blue);
+  color: var(--win95-white);
+  border: 1px dotted var(--win95-white);
+}
+
+.desktop-icon.selected .desktop-icon-label {
+  background: var(--win95-blue);
+  color: var(--win95-white);
+}
+
+/* Taskbar */
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: var(--win95-bg);
+  border-top: 1px solid var(--win95-light-gray);
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  z-index: 999;
+}
+
+.start-button {
+  background: var(--win95-bg);
+  border: 2px outset var(--win95-bg);
+  padding: 2px 8px;
+  font-family: 'MS Sans Serif', sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.start-button:active {
+  border: 2px inset var(--win95-bg);
+}
+
+.start-button-icon {
+  width: 16px;
+  height: 16px;
+  background: var(--win95-blue);
+  color: var(--win95-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+}
+
+.taskbar-clock {
+  margin-left: auto;
+  padding: 2px 8px;
+  font-size: 11px;
+  border: 1px inset var(--win95-bg);
+  height: 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* Animations */
+@keyframes window-open {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.window-opening {
+  animation: window-open 0.2s ease-out;
+}
+
+/* High contrast adjustments */
+@media (prefers-contrast: high) {
+  :root {
+    --win95-bg: #ffffff;
+    --win95-dark-gray: #000000;
+    --win95-black: #000000;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .desktop {
+    padding: 5px;
+  }
+  
+  .window {
+    margin: 5px;
+    max-width: 95vw;
+  }
+  
+  .win95-button {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+  
+  .desktop-icon {
+    width: 56px;
+    margin: 6px;
+  }
+  
+  .taskbar {
+    height: 32px;
+  }
+  
+  .start-button {
+    height: 28px;
+    font-size: 12px;
+  }
+}
